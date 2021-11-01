@@ -26,7 +26,7 @@ class LoginViewModel @Inject constructor(
                 _loginMutableSharedFlow.emit(ResponseWrapper.Error("Your phone number or password is incorrect"))
             else {
                 _loginMutableSharedFlow.emit(ResponseWrapper.Loading)
-                val loginResponse: Payroll? = loginUseCase(UserCredential(phoneNumber, password))
+                val loginResponse = loginUseCase(UserCredential(phoneNumber, password))
                 loginResponse?.let { _loginMutableSharedFlow.emit(ResponseWrapper.Success(it)) }
                     ?: _loginMutableSharedFlow.emit(ResponseWrapper.Error("Something went wrong"))
             }

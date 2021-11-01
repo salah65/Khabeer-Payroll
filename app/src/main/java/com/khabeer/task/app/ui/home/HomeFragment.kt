@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.Khabeer.task.databinding.FragmentHomeBinding
 import com.khabeer.task.app.core.PAYROLL
+import com.khabeer.task.domain.model.EmployeeModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding: FragmentHomeBinding get() = _binding!!
+    private lateinit var adapter: EmployeeAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,8 +26,9 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val payroll = arguments?.get(PAYROLL)
-        binding.text.text = payroll.toString()
+        val payroll:List<EmployeeModel> = (arguments?.get(PAYROLL) ?: emptyList<EmployeeModel>()) as List<EmployeeModel>
+        adapter = EmployeeAdapter(payroll)
+        binding.employeesRv.adapter=adapter
 
 
     }
