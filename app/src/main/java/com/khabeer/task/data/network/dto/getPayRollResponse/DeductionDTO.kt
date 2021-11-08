@@ -2,7 +2,7 @@ package com.khabeer.task.data.network.dto.getPayRollResponse
 
 import java.io.Serializable
 
-data class Deduction(
+data class DeductionDTO(
     val COMP_DESC_AR: String,
     val COMP_DESC_EN: String,
     val EMP_ID: Int,

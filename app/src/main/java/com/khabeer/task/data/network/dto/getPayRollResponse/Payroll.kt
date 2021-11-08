@@ -1,10 +1,13 @@
 package com.khabeer.task.data.network.dto.getPayRollResponse
 
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Payroll(
-    val Allowences: List<Allowence>,
+    @SerializedName("Allowences")
+    val allowancesDto: List<AllowanceDto>,
     val Date: String,
-    val Deduction: List<Deduction>,
+    @SerializedName("Deduction")
+    val DeductionsDTO: List<DeductionDTO>,
     val Employee: List<Employee>
 ):Serializable

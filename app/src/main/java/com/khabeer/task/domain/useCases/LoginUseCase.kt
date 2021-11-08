@@ -16,9 +16,9 @@ class LoginUseCase @Inject constructor(
         return runCatching {
             authRepository.login(userCredential)
                 ?.let {
-                    userRepository.fetchUserPayroll(it.Token)?.Payroll?.Employee?.mapToPayrollDomainModel()
+                    userRepository.fetchUserPayroll(it.Token)?.Payroll?.mapToPayrollDomainModel()
                         ?: emptyList()
                 }
-        }.getOrNull()
+        }.getOrThrow()
     }
 }
